@@ -7,9 +7,9 @@ namespace data
 	{
 		Data(string data)
 		{
-			string day = data.substr(0, 2);
-			string month = data.substr(3, 2);
-			string year = data.substr(6, 4);
+			string day = data.substr();
+			string month = data.substr();
+			string year = data.substr();
 
 			day = stoi(day);
 			month = stoi(month);
