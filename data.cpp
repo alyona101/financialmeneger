@@ -1,25 +1,33 @@
-﻿#include<iostream>
-#include<string>
-using namespace std;
+﻿#pragma once
+#include <stdexcept>
+
 namespace data
 {
-	struct Data
-	{
-		Data(string data)
-		{
-			string day = data.substr();
-			string month = data.substr();
-			string year = data.substr();
+    struct Data
+    {
+        Data() = default;
+        Data(std::string datacopy)
+        {
 
-			day = stoi(day);
-			month = stoi(month);
-			year = stoi(year);
-		}
+            std::string DD = datacopy.substr(0, 2);
+            std::string MM = datacopy.substr(3, 2);
+            std::string YY = datacopy.substr(6, 4);
+            this->day = atoi(DD.c_str());
+            this->month = atoi(MM.c_str());
+            this->year = atoi(YY.c_str());
+        }
 
-		int day;
-		int month;
-		int year;
-	
-	};
+        Data operator = (const Data& rhs)
+        {
+            day = rhs.day;
+            month = rhs.month;
+            year = rhs.year;
 
+            return *this;
+        }
+
+        int day;
+        int month;
+        int year;
+    };
 }
